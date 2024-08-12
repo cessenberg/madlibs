@@ -1,7 +1,7 @@
 library(shiny)
 
 generate_story <- function(noun, verb, adjective, adverb) {
-  cat("/n/ngenerate_story() running", file = stderr())
+  cat("\n\ngenerate_story() running", file = stderr())
   glue::glue("
     Once upon a time, there was a {adjective} {noun} who loved to
     {verb} {adverb}. It was the funniest thing ever!
@@ -27,7 +27,7 @@ ui <- fluidPage(
 
 server <- function(input, output) {
   story <- eventReactive(input$submit, {
-    cat("/n/neventReactive story running", file = stderr())
+    cat("\n\neventReactive story running", file = stderr())
     generate_story(input$noun1, input$verb, input$adjective, input$adverb)
   })
   output$story <- renderText({
